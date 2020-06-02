@@ -1,0 +1,8 @@
+[{ "id": "1", "name": "Grace",  "surname": "Jones",  "password": "grace",  "emailAddress": "grace@gmail.com",
+    "role": "General User"},
+  { "id": "2", "name": "Ann",  "surname": "Lees",  "password": "ann",  "emailAddress": "ann@gmail.com",  "role": "General User"},
+  {"id": "3", "name": "Lee",  "surname": "Anne",  "password": "lee",  "emailAddress": "lee@gmail.com",  "role": "General User"},
+  { "id": "4", "name": "Mike", "surname": "Hands",  "password": "mike",  "emailAddress": "mike@gmail.com",  "role": "General User"},
+  { "id": "5", "name": "Martin",  "surname": "Liessuer",  "password": "martin",  "emailAddress": "martin@gmail.com",  "role": "General User"}]
+  
+  

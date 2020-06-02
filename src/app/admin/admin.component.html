@@ -1,0 +1,189 @@
+
+<div   class="container mt-5">
+  
+  <div class="row" *ngIf="createNewUser">
+    <hr />
+    <div class="col-lg-12">
+      <fieldset>
+        <legend><h5><b>New User</b></h5></legend>
+       
+          <form #newUserForm="ngForm"   >
+            <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-md-4">First Name</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="name" name="name" [(ngModel)]="user.name" required  />
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4">EmailAdress</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="emailAddress" name="emailAddress" [(ngModel)]="user.emailAddress" required  />
+
+                    </div>
+                  </div>               
+
+               
+
+                <div class="form-group">
+                  <label class="control-label col-md-4">Password</label>
+                  <div class="col-md-8">
+                      <input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" required />
+  
+  
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="control-label col-md-4">&nbsp;</label>
+                <div class="col-md-8">
+                  <input class="form-control" style="display: none;" id="Id" name="Id" [(ngModel)]="user.id" required display="false" />
+                  
+                </div>
+            </div>
+            </div>
+
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label class="control-label col-md-4">Surname</label>
+                    <div class="col-md-8">
+                        <input class="form-control" id="surname" [(ngModel)]="user.surname" name="surname" required  />
+
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                  <div class="col-md-8">
+                  <select class="form-control" name="role" [(ngModel)]="user.role" placeholder="Role" required>
+                    <option *ngFor="let role of roles;" [value] = "role.Name">{{role.Name}}</option>
+                  </select>
+                </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-md-4">&nbsp;</label>
+                  <div class="col-md-8">
+                      <input type="button" [disabled]="!newUserForm.valid"  value="Save" class="btn btn-primary" (click)="SaveUser()" style="float: left;" id="btnSave"  />
+                      <input type="button"  style="position: relative; margin-left: 20%;" value="Cancel" class="btn btn-default" (click)="Cancel()" style="float: left;" id="btnCancel"  />
+                      <!-- <input type="button" [disabled]="!newUserForm.valid" value="Save" class="btn btn-primary"  style="float: left;" id="btnSave"  /> -->
+  
+  
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="control-label col-md-4">&nbsp;</label>
+                <div class="col-md-8">
+                </div>
+            </div>
+               
+                
+            </div>
+          </div>
+            </form>
+        
+        </fieldset>
+   
+    <hr />
+  
+    </div>
+  </div>
+
+  
+  <div class="row" *ngIf="!createNewUser">
+    <div class="row" > 
+      <div class="col-lg-12">        
+        <div class="row" > 
+              <div class="col-lg-4">
+                  <div class="form-group">
+                      <label class="control-label col-md-4">&nbsp;</label>
+                      <div class="col-md-8">                        
+                          <button  id="btnNewProduct"  class="ml-auto btn hvr-hover btn btn-success" (click)="CreateNewUser()" [disabled]="!this.auth.IsAdmin()" >New User</button> 
+                      </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="form-group">
+                      <label class="control-label col-md-4">&nbsp;</label>
+                      <div class="col-md-8">                          
+                        <button  id="btnExportJsonFile"  class="ml-auto btn hvr-hover btn btn-primary" (click)="ExportJsonFile()" [disabled]="!this.auth.IsAdmin()" >Export To Json File</button>
+                        
+                      </div>
+
+                  
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="form-group">
+                      <label class="control-label col-md-4">&nbsp;</label>
+                      <div class="col-md-8"> 
+                        <span id="span"> </span>
+                      </div>
+
+                  
+                  </div>
+                </div>
+        </div>
+        </div>
+    </div>     
+   
+</div>
+
+<div class="row" *ngIf="!createNewUser">      
+  <div class="col-lg-12">
+      <div class="table-main table-responsive">
+          <table class="table">
+              <thead>
+                  <tr>
+                     
+                      <th>Firstname</th>                          
+                      <th>Surname</th>
+                      <th>EmailAddress</th>
+                      <th>Role</th>
+                      <th>Edit</th>
+                      <th>Remove</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let user of users">
+                      <td class="thumbnail-img">
+                        {{user.name}}
+                      </td>
+                      <td class="name-pr">
+                          
+                            {{user.surname}}
+  
+                      </td>
+
+                      <td class="total-pr">
+                        <p> {{user.emailAddress}}</p>
+                    </td>
+                      <td class="price-pr">
+                          <p>{{user.role}}</p>
+                      </td>
+                      
+                      
+                      <td class="remove-pr">
+                        <button  id="btnEdit"  class="ml-auto btn hvr-hover btn btn-default" (click)= "EditUser(user)" [disabled]="!this.auth.IsAdmin()" >
+                          <i class="fa fa-edit"  ></i>
+                        </button> 
+                      </td>
+                      <td class="remove-pr">
+                        <button  id="btnRemove"  class="ml-auto btn hvr-hover btn btn-default" (click)= "RemoveUser(user)" [disabled]="!this.auth.IsAdmin()" >
+                          <i class="fa fa-remove"></i>
+                        </button>
+                        </td>
+                  </tr>
+                 
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+
+<div   class="container mt-5 col-lg-2 col-md-3 col-sm-6" *ngIf="auth.viewSignIn" >
+  <app-login></app-login>
+</div>
+<div   class="container mt-5 " *ngIf="!auth.viewSignIn" >
+  <app-admin></app-admin>
+   
+ </div>
+ 
