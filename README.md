@@ -11,8 +11,11 @@ Install Angular CLI from the terminal or command prompt by typing the command : 
 To run the App, go to the project folder with cd Testapp and the run the command : ng serve --open
 
 Navigate to `http://localhost:4200/`
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> 47944366729a0e86073baf0a3e6ed90a24485201
